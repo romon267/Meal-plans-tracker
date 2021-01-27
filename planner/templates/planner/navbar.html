@@ -1,7 +1,7 @@
 {% load i18n %}
 {%load static%}
 <link rel="stylesheet" href="{%static 'css/normalize.css'%}" />
-<link rel="stylesheet" href="{%static 'mybulma/css/mystyles.css'%}">
+<link rel="stylesheet" href="{%static 'css/mystyles.css'%}">
 <nav class="navbar is-info" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="{%url 'home' %}">
@@ -61,7 +61,7 @@
               {% trans "Log out" %}
             </a>
           {% else %}
-            <a class="button is-danger" href="{%url 'register'%}">
+            <a class="button is-info" href="{%url 'register'%}">
               <strong>{% trans "Sign up" %}</strong>
             </a>
             <a class="button is-danger" href="{%url 'login'%}">
