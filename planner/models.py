@@ -55,8 +55,8 @@ class Plan(models.Model):
         ('7d', '7-day plan'),
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    name = models.CharField(max_length=60, blank=True, null=True, default='Meal Plan')
-    type = models.CharField(max_length=12, choices=PLAN_DAYS_CHOICES)
+    name = models.CharField(max_length=255, blank=True, null=True, default='Meal Plan')
+    type = models.CharField(max_length=255, choices=PLAN_DAYS_CHOICES)
     date_created = models.DateTimeField(auto_now_add=True)
 
     @property
@@ -101,8 +101,8 @@ class PlanItem(models.Model):
 
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, blank=True, null=True, default=None)
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, blank=True, null=True)
-    day = models.CharField(max_length=10, choices=DAYS_CHOICES)
-    time = models.CharField(max_length=11, choices=TIME_CHOICES, null=True, blank=True)
+    day = models.CharField(max_length=255, choices=DAYS_CHOICES)
+    time = models.CharField(max_length=255, choices=TIME_CHOICES, null=True, blank=True)
 
 
     def __str__(self):
