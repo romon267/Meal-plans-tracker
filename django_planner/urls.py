@@ -23,7 +23,6 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path('admin/', admin.site.urls),
     path('', include('planner.urls')),
     path('users/', include('users.urls')),
 )

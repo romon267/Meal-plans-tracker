@@ -10,7 +10,7 @@
         {% for recipe in recipes%}
             <div class="column is-one-third">
                 <div class="box">
-                    <p class="is-size-4 has-text-weight-bold"><a class="has-text-dark" href="{%url 'recipe-detail' recipe.pk%}">{{recipe.name}}</a></p>
+                    <p class="is-size-4 has-text-weight-bold"><a href="{%url 'recipe-detail' recipe.pk%}">{{recipe.name}}</a></p>
                     <text>{{recipe.get_total_calories}} {%trans "calories"%}</text> <br>
                     {%if language == 'en'%}
                     <text>{%trans "Avg. price: $"%}{{recipe.get_total_price|floatformat:2}}</text>
@@ -42,7 +42,7 @@
         {{ form.description|add_class:"textarea" }}
     </div>
 
-        <button class="button is-primary" type="submit">{%trans "Submit"%}</button>
+        <button class="button is-danger" type="submit">{%trans "Submit"%}</button>
     </form>
     </div>
 {% endif %}

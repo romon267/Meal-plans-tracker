@@ -4,7 +4,7 @@
 <div class="container content px-3 pt-2">
         <text clas="has-text-weight-bold is-size-3">{%trans "You have been logged out"%}</text>
         <div class="pt-3">
-                <small class="text-muted">{%trans "Log in again"%} <a href="{%url 'login'%}">{%trans "Sign in"%}</a></small>
+                <a href="{%url 'login'%}" class="button is-danger">{%trans "Log in again"%}</a>
         </div>
 </div>
 {% endblock %}

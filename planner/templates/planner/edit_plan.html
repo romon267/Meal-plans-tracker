@@ -3,18 +3,19 @@
 {% load i18n %}
 {% block content %}
 <div class="container content px-3 mt-3">
-    <text class="has-text-weight-bold is-size-3">{{plan.name}}</text>
+    <text class="has-text-weight-bold is-size-3">{{plan.name}} </text>
+    <a class="button is-small is-danger" href="{%url 'delete-plan' plan.pk%}">{%trans "Delete"%}</a>
     <div class="columns mt-1 is-multiline">
     {% for key, value in days.items %}
         <div class="column is-one-third">
             <div class="box">
-                <p class="is-size-4 has-text-weight-bold"><a href="{%url 'edit-plan' plan.pk%}">{%trans "Day"%} {{value}}</a></p>
+                <p class="is-size-4 has-text-weight-bold">{%trans "Day"%} {{value}}</p>
                 <ul>
                     <li><text class="is-size-5 has-text-weight-semibold">{%trans "Breakfast"%}:</text></li>
                     <ul>
                     {% for item in items %}
                         {% if item.day == value and item.time == 'br' %}
-                            <li>{{item.recipe.name}}<!--<a class="delete is-small" href="#"></a>--></li>
+                            <li>{{item.recipe.name}}<a class="delete is-small is-hidden" href="{%url 'delete-plan-item' pk=plan.pk item_pk=item.pk%}"></a></li>
                         {% endif %}
                     {% endfor %}
                     </ul>
@@ -24,7 +25,7 @@
                     <ul>
                     {% for item in items %}
                         {% if item.day == value and item.time == 'ln' %}
-                            <li>{{item.recipe.name}}<!--<a class="delete is-small" href="#"></a>--></li>
+                            <li>{{item.recipe.name}}<a class="delete is-small is-hidden" href="{%url 'delete-plan-item' pk=plan.pk item_pk=item.pk%}"></a></li>
                         {% endif %}
                     {% endfor %}
                     </ul>
@@ -34,7 +35,7 @@
                     <ul>
                     {% for item in items %}
                         {% if item.day == value and item.time == 'dn' %}
-                            <li>{{item.recipe.name}}<!--<a class="delete is-small" href="#"></a>--></li>
+                            <li>{{item.recipe.name}}<a class="delete is-small is-hidden" href="{%url 'delete-plan-item' pk=plan.pk item_pk=item.pk%}"></a></li>
                         {% endif %}
                     {% endfor %}
                     </ul>
@@ -44,7 +45,7 @@
                     <ul>
                     {% for item in items %}
                         {% if item.day == value and item.time == 'sn' %}
-                            <li>{{item.recipe.name}}<!--<a class="delete is-small" href="#"></a>--></li>
+                            <li>{{item.recipe.name}}<a class="delete is-small is-hidden" href="{%url 'delete-plan-item' pk=plan.pk item_pk=item.pk%}"></a></li>
                         {% endif %}
                     {% endfor %}
                     </ul>
@@ -61,10 +62,14 @@
         
     {% endfor %}
     </div>
-    <text class="has-text-weight-bold is-size-4">{%trans "You can add recipes to your plan"%}:</text>
+    <button id="edit-button" class="button is-warning mb-3">{%trans "Edit" %}</button> <br>
 </div>
 
-<div class="container content px-3">
+
+
+    
+<div id="post-form" class="container content px-3 is-hidden">
+<text class="has-text-weight-bold is-size-4">{%trans "You can add recipes to your plan"%}:</text>
     <form method ="POST">
         {%csrf_token%}
         {{ form.non_field_errors }}
@@ -102,7 +107,25 @@
         </div>
     </div>
 
-        <button class="button is-primary" type="submit">{%trans "Submit"%}</button>
+        <button class="button is-danger" type="submit">{%trans "Submit"%}</button>
     </form>
 </div>
+<script type="text/javascript">
+    const editButton = document.querySelector('#edit-button');
+    const postForm = document.querySelector('#post-form');
+    // Get all "delete" elements
+    const deleteIcons = Array.prototype.slice.call(document.querySelectorAll('.delete'), 0);
+
+    editButton.addEventListener('click', () => {
+        console.log('Clicked')
+        postForm.classList.toggle('is-hidden');
+
+        deleteIcons.forEach(function (arrayItem) {
+            arrayItem.classList.toggle('is-hidden');
+        });
+    });
+
+    
+</script>
 {% endblock content %}
+

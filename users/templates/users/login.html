@@ -1,4 +1,4 @@
-{%extends 'planner/base.html'%}
+{% extends 'planner/base.html'%}
 {% load i18n %}
 {% load widget_tweaks %}
 {% block content%}
@@ -20,11 +20,11 @@
             </div>
         </fieldset>
         <div class="control">
-            <button class="button is-primary" type="submit">{%trans "Sign in"%}</button>
+            <button class="button is-danger" type="submit">{%trans "Sign in"%}</button>
         </div>
     </form>
     <div class="border-top pt-3">
         <small class="text-muted">{%trans "Need an account?"%} <a class="ml-2" href="{%url 'register'%}">{%trans "Sign up"%}</a></small>
     </div>
 </div>
-{% endblock %}
+{% endblock content%}

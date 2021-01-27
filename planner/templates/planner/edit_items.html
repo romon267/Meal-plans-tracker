@@ -2,8 +2,9 @@
 {% load widget_tweaks %}
 {% load i18n %}
 {% block content %}
-<div class="container content">
+<div class="container content mt-3">
     <text class="has-text-weight-bold is-size-3">{{recipe.name}}</text>
+    <a class="button is-small is-danger" href="{%url 'delete-recipe' recipe.pk%}">{%trans "Delete"%}</a>
     <ul>
     {% for item in items %}
     <li>{{item.product.name}}, {{item.grams}}g. <a class="delete is-small" href="{%url 'delete-item' pk=recipe.pk item_pk=item.pk%}"></a></li> 
@@ -25,11 +26,11 @@
     </div>
     <div class="field">
         {{ form.grams.errors }}
-        <label class="label" for="{{ form.grams.id_for_label }}">{%trans "Grams"%}%:</label>
+        <label class="label" for="{{ form.grams.id_for_label }}">{%trans "Grams"%}:</label>
         {{ form.grams|add_class:"input" }}
     </div>
 
-        <button class="button is-primary" type="submit">{%trans "Submit"%}</button>
+        <button class="button is-danger" type="submit">{%trans "Submit"%}</button>
     </form>
 </div>
 {% endblock content %}

@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.deletion import SET_NULL
 
 
 class Product(models.Model):
@@ -13,7 +12,7 @@ class Product(models.Model):
 
 
 class RecipeItem(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True, default=None)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True, default=None)
     
     grams = models.IntegerField(default=0, null=True, blank=True)
 
@@ -28,8 +27,9 @@ class RecipeItem(models.Model):
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    items = models.ManyToManyField(RecipeItem, blank=True, null=True, default=None)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    items = models.ManyToManyField(RecipeItem, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    
     @property
     def get_total_price(self):
         recipeitems = self.items.all()
@@ -54,7 +54,7 @@ class Plan(models.Model):
         ('3d', '3-day plan'),
         ('7d', '7-day plan'),
     ]
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=60, blank=True, null=True, default='Meal Plan')
     type = models.CharField(max_length=2, choices=PLAN_DAYS_CHOICES)
     date_created = models.DateTimeField(auto_now_add=True)
@@ -99,7 +99,7 @@ class PlanItem(models.Model):
         ('sn', 'Snack'),
     ]
 
-    recipe = models.ForeignKey(Recipe, on_delete=models.SET_NULL, blank=True, null=True, default=None)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, blank=True, null=True, default=None)
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, blank=True, null=True)
     day = models.CharField(max_length=1, choices=DAYS_CHOICES)
     time = models.CharField(max_length=2, choices=TIME_CHOICES, null=True, blank=True)

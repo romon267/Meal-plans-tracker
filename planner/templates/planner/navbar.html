@@ -1,5 +1,8 @@
 {% load i18n %}
-<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+{%load static%}
+<link rel="stylesheet" href="{%static 'css/normalize.css'%}" />
+<link rel="stylesheet" href="{%static 'mybulma/css/mystyles.css'%}">
+<nav class="navbar is-info" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="{%url 'home' %}">
       TRACKER
@@ -35,35 +38,33 @@
           <a class="navbar-item">
             {% trans "About" %}
           </a>
-          <a class="navbar-item" href="{%url 'register'%}">
-            {% trans "Register" %}
-          </a>
-          <a class="navbar-item" href="{%url 'login'%}">
-            {% trans "Log in" %}
-          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            <a class="has-text-dark pr-1" href="{%url 'change-language' 'en'%}">
+              EN  
+            </a>
+            |
+            <a class="has-text-dark px-1" href="{%url 'change-language' 'ru'%}">
+              RU
+            </a>
+           </div> 
         </div>
       </div>
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <a class="has-text-dark" href="{%url 'change-language' 'en'%}">
-          en
-        </a>
-        |
-        <a class="has-text-dark mr-5" href="{%url 'change-language' 'ru'%}">
-          ru
-        </a>
+        
         <div class="buttons">
           {%if request.user.is_authenticated %}
-            <a class="button is-light" href="{%url 'logout'%}">
+            <a class="button is-danger" href="{%url 'logout'%}">
               {% trans "Log out" %}
             </a>
           {% else %}
-            <a class="button is-primary" href="{%url 'register'%}">
+            <a class="button is-danger" href="{%url 'register'%}">
               <strong>{% trans "Sign up" %}</strong>
             </a>
-            <a class="button is-light" href="{%url 'login'%}">
+            <a class="button is-danger" href="{%url 'login'%}">
               {% trans "Log in" %}
             </a>
           {% endif %}
