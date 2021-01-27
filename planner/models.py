@@ -26,7 +26,7 @@ class RecipeItem(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(max_length=800)
     items = models.ManyToManyField(RecipeItem, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     
