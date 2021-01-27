@@ -1,5 +1,6 @@
 {%extends 'planner/base.html'%}
 {% load widget_tweaks%}
+{% load i18n %}
 {% block content %}
 <div class="container content px-3 mt-3">
     <text class="has-text-weight-bold is-size-3">{{plan.name}}</text>
@@ -7,9 +8,9 @@
     {% for key, value in days.items %}
         <div class="column is-one-third">
             <div class="box">
-                <p class="is-size-4 has-text-weight-bold"><a href="{%url 'edit-plan' plan.pk%}">Day {{value}}</a></p>
+                <p class="is-size-4 has-text-weight-bold"><a href="{%url 'edit-plan' plan.pk%}">{%trans "Day"%} {{value}}</a></p>
                 <ul>
-                    <li><text class="is-size-5 has-text-weight-semibold">Breakfast:</text></li>
+                    <li><text class="is-size-5 has-text-weight-semibold">{%trans "Breakfast"%}:</text></li>
                     <ul>
                     {% for item in items %}
                         {% if item.day == value and item.time == 'br' %}
@@ -19,7 +20,7 @@
                     </ul>
                 </ul>
                 <ul>
-                    <li><text class="is-size-5 has-text-weight-semibold">Lunch:</text></li>
+                    <li><text class="is-size-5 has-text-weight-semibold">{%trans "Lunch"%}:</text></li>
                     <ul>
                     {% for item in items %}
                         {% if item.day == value and item.time == 'ln' %}
@@ -29,7 +30,7 @@
                     </ul>
                 </ul>
                 <ul>
-                    <li><text class="is-size-5 has-text-weight-semibold">Dinner:</text></li>
+                    <li><text class="is-size-5 has-text-weight-semibold">{%trans "Dinner"%}:</text></li>
                     <ul>
                     {% for item in items %}
                         {% if item.day == value and item.time == 'dn' %}
@@ -39,7 +40,7 @@
                     </ul>
                 </ul>
                 <ul>
-                    <li><text class="is-size-5 has-text-weight-semibold">Snacks:</text></li>
+                    <li><text class="is-size-5 has-text-weight-semibold">{%trans "Snacks"%}:</text></li>
                     <ul>
                     {% for item in items %}
                         {% if item.day == value and item.time == 'sn' %}
@@ -48,11 +49,19 @@
                     {% endfor %}
                     </ul>
                 </ul>
-            </div>
+                
+                <text>{% trans "Total calories: "%}{{day_calories|get_item:value}}</text> <br>
+                {% if language == 'en'%}
+                    <text>{% trans "Total price: $"%}{{day_price|get_item:value|floatformat:2}}</text>
+                {% else %}
+                    <text>{% trans "Total price: $"%} {%widthratio day_price|get_item:value 1 76%}</text>
+                {% endif %}
+            </div>   
         </div>
+        
     {% endfor %}
     </div>
-    <text class="has-text-weight-bold is-size-4">You can add recipes to your plan:</text>
+    <text class="has-text-weight-bold is-size-4">{%trans "You can add recipes to your plan"%}:</text>
 </div>
 
 <div class="container content px-3">
@@ -69,7 +78,7 @@
     </div>
     -->
     <div class="field">
-        <label class="label">Day:</label>
+        <label class="label">{%trans "Day"%}:</label>
         <div class="select">
         <select name="select" id="select">
             {% for key, value in days.items %}
@@ -80,20 +89,20 @@
     </div>
     <div class="field">
         {{ form.time.errors }}
-        <label class="label" for="{{ form.time.id_for_label }}">Time:</label>
+        <label class="label" for="{{ form.time.id_for_label }}">{%trans "Time"%}:</label>
         <div class="select">
             {{ form.time }}
         </div>
     </div>
     <div class="field">
         {{ form.recipe.errors }}
-        <label class="label" for="{{ form.recipe.id_for_label }}">Recipe:</label>
+        <label class="label" for="{{ form.recipe.id_for_label }}">{%trans "Recipe"%}:</label>
         <div class="select">
             {{ form.recipe }}
         </div>
     </div>
 
-        <button class="button is-primary" type="submit">Submit</button>
+        <button class="button is-primary" type="submit">{%trans "Submit"%}</button>
     </form>
 </div>
 {% endblock content %}

@@ -1,8 +1,9 @@
 {% extends 'planner/base.html'%}
+{% load i18n %}
 {% load widget_tweaks %}
 {% block content %}
 <div class="container content px-3 mt-2">
-    <h2 class="has-text-weight-bold is-size-3">All recipes:</h2>
+    <h2 class="has-text-weight-bold is-size-3">{%trans "All recipes"%}:</h2>
 </div>
 <div class="container px-3">
     <div class="columns is-multiline">
@@ -10,10 +11,14 @@
             <div class="column is-one-third">
                 <div class="box">
                     <p class="is-size-4 has-text-weight-bold"><a class="has-text-dark" href="{%url 'recipe-detail' recipe.pk%}">{{recipe.name}}</a></p>
-                    <text>{{recipe.get_total_calories}} calories</text> <br>
-                    <text>Avg. price: ${{recipe.get_total_price|floatformat:2}}</text>
+                    <text>{{recipe.get_total_calories}} {%trans "calories"%}</text> <br>
+                    {%if language == 'en'%}
+                    <text>{%trans "Avg. price: $"%}{{recipe.get_total_price|floatformat:2}}</text>
+                    {% else %}
+                    <text>{%trans "Avg. price: $"%}{%widthratio recipe.get_total_price 1 76%}</text>
+                    {% endif %}
                     {% if request.user.is_authenticated and request.user == recipe.user%}
-                    <a class="button is-small" href="{%url 'edit-items' recipe.pk%}">Edit items</a>
+                        <a class="button is-small" href="{%url 'edit-items' recipe.pk%}">{%trans "Edit"%}</a>
                     {% endif %}
                 </div>
             </div>
@@ -28,16 +33,16 @@
         {{ form.non_field_errors }}
     <div class="field">
         {{ form.name.errors }}
-        <label class="label" for="{{ form.name.id_for_label }}">Recipe name:</label>
+        <label class="label" for="{{ form.name.id_for_label }}">{%trans "Recipe name"%}:</label>
         {{ form.name|add_class:"input" }}
     </div>
     <div class="field">
         {{ form.description.errors }}
-        <label class="label" for="{{ form.description.id_for_label }}">Description:</label>
+        <label class="label" for="{{ form.description.id_for_label }}">{%trans "Description"%}:</label>
         {{ form.description|add_class:"textarea" }}
     </div>
 
-        <button class="button is-primary" type="submit">Submit</button>
+        <button class="button is-primary" type="submit">{%trans "Submit"%}</button>
     </form>
     </div>
 {% endif %}

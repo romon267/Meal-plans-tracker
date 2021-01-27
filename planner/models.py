@@ -71,6 +71,7 @@ class Plan(models.Model):
         total = sum([item.recipe.get_total_price for item in planitems])
         return total
 
+    @property
     def get_total_calories(self):
         planitems = self.planitem_set.all()
         total = sum([item.recipe.get_total_calories for item in planitems])

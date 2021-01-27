@@ -1,5 +1,6 @@
 {%extends 'planner/base.html'%}
 {% load widget_tweaks %}
+{% load i18n %}
 {% block content %}
 <div class="container content">
     <text class="has-text-weight-bold is-size-3">{{recipe.name}}</text>
@@ -8,7 +9,7 @@
     <li>{{item.product.name}}, {{item.grams}}g. <a class="delete is-small" href="{%url 'delete-item' pk=recipe.pk item_pk=item.pk%}"></a></li> 
     {% endfor %}
     </ul>
-    <text class="has-text-weight-bold is-size-4">You can add or delete items from a recipe here</text>
+    <text class="has-text-weight-bold is-size-4">{%trans "You can add or delete items from a recipe here"%}</text>
 </div>
 
 <div class="container content">
@@ -17,18 +18,18 @@
         {{ form.non_field_errors }}
     <div class="field">
         {{ form.product.errors }}
-        <label class="label" for="{{ form.product.id_for_label }}">Product:</label>
+        <label class="label" for="{{ form.product.id_for_label }}">{%trans "Product"%}:</label>
         <div class="select">
             {{ form.product}}
         </div>
     </div>
     <div class="field">
         {{ form.grams.errors }}
-        <label class="label" for="{{ form.grams.id_for_label }}">Grams:</label>
+        <label class="label" for="{{ form.grams.id_for_label }}">{%trans "Grams"%}%:</label>
         {{ form.grams|add_class:"input" }}
     </div>
 
-        <button class="button is-primary" type="submit">Submit</button>
+        <button class="button is-primary" type="submit">{%trans "Submit"%}</button>
     </form>
 </div>
 {% endblock content %}
