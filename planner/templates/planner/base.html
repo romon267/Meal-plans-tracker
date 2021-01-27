@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Planner</title>
+    {%endif%}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    
+  </head>
+  <body>
+  {%include 'planner/navbar.html'%}
+  
+    {% if messages %}
+    <div class="container content">
+      {% for message in messages %}
+        <div class="notification is-{{message.tags}}" id="notification">
+          <button class="delete" id="delete-notification" aria-label="delete"></button>
+          {{message}}
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  
+  {%block content%}
+  {%endblock content%}
+  <script src="{% static 'js/base.js'%}"></script>
+  </body>
+</html>

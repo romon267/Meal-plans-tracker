@@ -1,0 +1,19 @@
+{% extends 'planner/base.html' %}
+{% block content %}
+<div class="container content px-3 mt-2">
+    <h2 class="has-text-weight-bold is-size-3">All products:</h2>
+</div>
+<div class="container px-3">
+    <div class="columns">
+        {% for product in products%}
+            <div class="column is-one-quarter">
+                <div class="box">
+                    <p class="is-size-4 has-text-weight-bold">{{product.name}}</p>
+                    <text>{{product.calories}} calories/100g</text> <br>
+                    <text>Avg. price: ${{product.price}} for 100g</text>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

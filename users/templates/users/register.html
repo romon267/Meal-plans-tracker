@@ -1,0 +1,39 @@
+{% extends 'planner/base.html' %}
+{% load widget_tweaks %}
+{% block content%}
+<div class="container content px-3">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="control">
+            <legend class="border-bottom pt-3 mb-4"><h1 class="is-size-3 has-text-weight-bold">Register</h1></legend>
+            {{ form.non_field_errors }}
+            <div class="field">
+                {{ form.username.errors }}
+                <label class="label" for="{{ form.username.id_for_label }}">Username:</label>
+                    {{ form.username|add_class:"input"}}
+            </div>
+            <div class="field">
+                {{ form.email.errors }}
+                <label class="label" for="{{ form.email.id_for_label }}">Email:</label>
+                    {{ form.email|add_class:"input"}}
+            </div>
+            <div class="field mb-3">
+                {{ form.password1.errors }}
+                <label class="label" for="{{ form.password1.id_for_label }}">Password:</label>
+                    {{ form.password1|add_class:"input"}}
+            </div>
+            <div class="field mb-3">
+                {{ form.password2.errors }}
+                <label class="label" for="{{ form.password2.id_for_label }}">Confirm password:</label>
+                    {{ form.password2|add_class:"input"}}
+            </div>
+        </fieldset>
+        <div class="control">
+            <button class="button is-primary" type="submit">Sign up</button>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">Have an account already? <a class="ml-2" href="{%url 'login'%}">Sign im</a></small>
+    </div>
+</div>
+{% endblock %}

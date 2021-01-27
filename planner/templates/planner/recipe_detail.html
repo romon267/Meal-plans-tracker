@@ -1,0 +1,12 @@
+{%extends 'planner/base.html'%}
+{% block content %}
+<div class="container content px-3">
+    <text class="has-text-weight-bold is-size-2">{{recipe.name}}</text>
+    <p>{{recipe.description}}</p>
+    <ul>
+        {% for item in items %}
+        <li>{{item.product.name}}, {{item.grams}}g., ${{item.get_total|floatformat:2}}</li> 
+        {% endfor %}
+        </ul>
+</div>
+{% endblock content %}

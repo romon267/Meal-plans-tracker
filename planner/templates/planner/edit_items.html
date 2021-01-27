@@ -1,0 +1,34 @@
+{%extends 'planner/base.html'%}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container content">
+    <text class="has-text-weight-bold is-size-3">{{recipe.name}}</text>
+    <ul>
+    {% for item in items %}
+    <li>{{item.product.name}}, {{item.grams}}g. <a class="delete is-small" href="{%url 'delete-item' pk=recipe.pk item_pk=item.pk%}"></a></li> 
+    {% endfor %}
+    </ul>
+    <text class="has-text-weight-bold is-size-4">You can add or delete items from a recipe here</text>
+</div>
+
+<div class="container content">
+    <form method ="POST">
+        {%csrf_token%}
+        {{ form.non_field_errors }}
+    <div class="field">
+        {{ form.product.errors }}
+        <label class="label" for="{{ form.product.id_for_label }}">Product:</label>
+        <div class="select">
+            {{ form.product}}
+        </div>
+    </div>
+    <div class="field">
+        {{ form.grams.errors }}
+        <label class="label" for="{{ form.grams.id_for_label }}">Grams:</label>
+        {{ form.grams|add_class:"input" }}
+    </div>
+
+        <button class="button is-primary" type="submit">Submit</button>
+    </form>
+</div>
+{% endblock content %}
