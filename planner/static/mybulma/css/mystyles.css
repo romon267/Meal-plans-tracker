@@ -3424,7 +3424,7 @@ button.dropdown-item {
   flex-direction: column;
   max-height: calc(100vh - 40px);
   overflow: hidden;
-  -ms-overflow-y: visible; }
+   }
 
 .modal-card-head,
 .modal-card-foot {
