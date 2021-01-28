@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 22:32+0300\n"
+"POT-Creation-Date: 2021-01-28 23:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr "Граммы"
 
 #: .\planner\templates\planner\edit_items.html:33
 #: .\planner\templates\planner\edit_plan.html:110
-#: .\planner\templates\planner\planner.html:45
+#: .\planner\templates\planner\planner.html:49
 #: .\planner\templates\planner\recipes.html:45
 msgid "Submit"
 msgstr "Отправить"
@@ -125,7 +125,7 @@ msgid "Log out"
 msgstr "Выйти"
 
 #: .\planner\templates\planner\navbar.html:65
-#: .\users\templates\users\login.html:27
+#: .\users\templates\users\login.html:28
 #: .\users\templates\users\register.html:33
 msgid "Sign up"
 msgstr "Зарегистрироваться"
@@ -138,12 +138,20 @@ msgstr "Войти"
 msgid "Your plans"
 msgstr "Ваши планы"
 
-#: .\planner\templates\planner\planner.html:16
+#: .\planner\templates\planner\planner.html:15
+msgid "3 days plan"
+msgstr "Трехдневный план"
+
+#: .\planner\templates\planner\planner.html:17
+msgid "7 days plan"
+msgstr "Семидневный план"
+
+#: .\planner\templates\planner\planner.html:20
 msgid "total calories"
 msgstr "всего калорий"
 
-#: .\planner\templates\planner\planner.html:18
-#: .\planner\templates\planner\planner.html:20
+#: .\planner\templates\planner\planner.html:22
+#: .\planner\templates\planner\planner.html:24
 #: .\planner\templates\planner\products.html:16
 #: .\planner\templates\planner\products.html:18
 #: .\planner\templates\planner\recipes.html:16
@@ -151,11 +159,11 @@ msgstr "всего калорий"
 msgid "Avg. price: $"
 msgstr "Прим. цена: ₽"
 
-#: .\planner\templates\planner\planner.html:34
+#: .\planner\templates\planner\planner.html:38
 msgid "Meal plan name"
 msgstr "Название плана"
 
-#: .\planner\templates\planner\planner.html:39
+#: .\planner\templates\planner\planner.html:43
 msgid "Plan type"
 msgstr "Тип плана"
 
@@ -198,66 +206,66 @@ msgstr "Название рецепта"
 msgid "Description"
 msgstr "Описание"
 
-#: .\planner\views.py:42
+#: .\planner\views.py:43
 msgid "Your new plan has been created!"
 msgstr "Вы создали новый план!"
 
-#: .\planner\views.py:56 .\planner\views.py:195 .\planner\views.py:227
+#: .\planner\views.py:57 .\planner\views.py:196 .\planner\views.py:228
 msgid "404: Does not exist."
 msgstr "Ошибка 404: Не существует"
 
-#: .\planner\views.py:97 .\planner\views.py:161 .\planner\views.py:185
-#: .\planner\views.py:202 .\planner\views.py:217
+#: .\planner\views.py:98 .\planner\views.py:162 .\planner\views.py:186
+#: .\planner\views.py:203 .\planner\views.py:218
 msgid "403: Forbidden."
 msgstr "403: Запрещено."
 
-#: .\planner\views.py:129
+#: .\planner\views.py:130
 msgid "Your new recipe has been created"
 msgstr "Вы создали новый рецепт."
 
-#: .\planner\views.py:154 .\planner\views.py:169
+#: .\planner\views.py:155 .\planner\views.py:170
 msgid "404: Object does not exist."
 msgstr "404: Объект не существует."
 
-#: .\planner\views.py:158
+#: .\planner\views.py:159
 msgid "You have deleted the recipe!"
 msgstr "Вы удалили рецепт!"
 
-#: .\planner\views.py:199 .\planner\views.py:214 .\planner\views.py:231
+#: .\planner\views.py:200 .\planner\views.py:215 .\planner\views.py:232
 msgid "Deleted successfully!"
 msgstr "Успешно удалено!"
 
-#: .\planner\views.py:210
+#: .\planner\views.py:211
 msgid "404: Plan does not exist."
 msgstr "404: План не существует."
 
-#: .\planner\views.py:234
+#: .\planner\views.py:235
 msgid "403: You can not delete that."
 msgstr "403: Запрещено."
 
-#: .\users\templates\users\login.html:9 .\users\templates\users\login.html:23
+#: .\users\templates\users\login.html:9 .\users\templates\users\login.html:24
 #: .\users\templates\users\register.html:37
 msgid "Sign in"
 msgstr "Войти"
 
-#: .\users\templates\users\login.html:13
+#: .\users\templates\users\login.html:14
 msgid "Email or username"
 msgstr "Почта или имя пользователя"
 
-#: .\users\templates\users\login.html:18
+#: .\users\templates\users\login.html:19
 #: .\users\templates\users\register.html:23
 msgid "Password"
 msgstr "Пароль"
 
-#: .\users\templates\users\login.html:27
+#: .\users\templates\users\login.html:28
 msgid "Need an account?"
 msgstr "Нужен аккаунт?"
 
-#: .\users\templates\users\login.html:30
+#: .\users\templates\users\login.html:31
 msgid "Forgot password?"
 msgstr "Забыли пароль?"
 
-#: .\users\templates\users\login.html:30
+#: .\users\templates\users\login.html:31
 #: .\users\templates\users\password_reset_form.html:9
 msgid "Reset password"
 msgstr "Сбросить пароль"
@@ -309,11 +317,11 @@ msgstr "Письмо отправлено."
 
 #: .\users\templates\users\password_reset_sent.html:7
 msgid ""
-"We've mailed you the instructions with reset details.\\nIf you didn't "
+"We've mailed you the instructions with reset details.\nIf you didn't "
 "recieve an email, please make sure you’ve entered the address you registered "
 "with, and check your spam folder."
 msgstr ""
-"Мы отправили вам на почту инструкции по сбросу пароля. \\nЕсли вы не "
+"Мы отправили вам на почту инструкции по сбросу пароля.\nЕсли вы не "
 "получили письмо, пожалуйста проверьте адрес, который вы указали и папку "
 "спама в почте."
 

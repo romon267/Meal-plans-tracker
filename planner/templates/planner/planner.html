@@ -6,13 +6,17 @@
     <h2 class="has-text-weight-bold is-size-3">{%trans "Your plans"%}:</h2>
 </div>
 <div class="container px-3 mt-2">
-    <div class="columns">
+    <div class="columns is-multiline">
         {% for plan in plans%}
             <div class="column is-one-quarter">
                 <div class="box">
                     <p class="is-size-4 has-text-weight-bold"><a href="{%url 'edit-plan' plan.pk%}">{{plan.name}}</a></p>
-                    <text>{{plan.type}}</text> <br>
-                    <text>{{plan.date_created}}</text> <br>
+                    {% if plan.type == '3d' %}
+                        <text>{%trans "3 days plan"%}</text> <br>
+                    {% elif plan.type == '7d' %}
+                        <text>{%trans "7 days plan"%}</text> <br>
+                    {% endif %}
+                    <text>{{plan.date_created|date:"j E, Y"}}</text> <br>
                     <text>{{plan.get_total_calories}} {%trans "total calories"%}</text> <br>
                     {% if language == 'en' %}
                         <text>{%trans "Avg. price: $"%} {{plan.get_total_price|div:76 }}</text>

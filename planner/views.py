@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils import translation
 from django.utils.translation import gettext
 from django.template.defaulttags import register
-
+from django.template.defaultfilters import date as _date
+from datetime import datetime
 
 @register.filter
 def div(value, div):
