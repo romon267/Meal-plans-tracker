@@ -84,16 +84,16 @@ class Plan(models.Model):
 
 class PlanItem(models.Model):
     TIME_CHOICES = [
-        ('br', 'Breakfast'),
-        ('ln', 'Lunch'),
-        ('dn', 'Dinner'),
-        ('sn', 'Snack'),
+        ('br', 'Завтрак'),
+        ('ln', 'Обед'),
+        ('dn', 'Ужин'),
+        ('sn', 'Перекус'),
     ]
 
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, blank=True, null=True)
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, blank=True, null=True)
     day = models.CharField(max_length=255, blank=True)
-    time = models.CharField(max_length=255, null=True, blank=True)
+    time = models.CharField(max_length=255, choices=TIME_CHOICES, null=True, blank=True)
 
 
     def __str__(self):
