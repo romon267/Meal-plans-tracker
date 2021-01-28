@@ -12,7 +12,7 @@ class Product(models.Model):
 
 
 class RecipeItem(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True, default=None)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
     
     grams = models.IntegerField(null=True, blank=True)
 
@@ -26,7 +26,7 @@ class RecipeItem(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField(max_length=800)
+    description = models.TextField(max_length=1000)
     items = models.ManyToManyField(RecipeItem, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     
@@ -55,9 +55,9 @@ class Plan(models.Model):
         ('7d', '7-day plan'),
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    name = models.CharField(max_length=255, blank=True, null=True, default='Meal Plan')
+    name = models.CharField(max_length=255, blank=True, null=True)
     type = models.CharField(max_length=255, choices=PLAN_DAYS_CHOICES)
-    date_created = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now_add=True, max_length=255)
 
     @property
     def get_total_items(self):
@@ -99,7 +99,7 @@ class PlanItem(models.Model):
         ('sn', 'Snack'),
     ]
 
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, blank=True, null=True, default=None)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, blank=True, null=True)
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, blank=True, null=True)
     day = models.CharField(max_length=255, choices=DAYS_CHOICES)
     time = models.CharField(max_length=255, choices=TIME_CHOICES, null=True, blank=True)
