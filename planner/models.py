@@ -14,7 +14,7 @@ class Product(models.Model):
 class RecipeItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
     
-    grams = models.IntegerField(null=True, blank=True)
+    grams = models.IntegerField(blank=True, null=True)
 
     @property
     def get_total(self):
@@ -83,15 +83,6 @@ class Plan(models.Model):
 
 
 class PlanItem(models.Model):
-    DAYS_CHOICES = [
-        ('1', 'Day 1'),
-        ('2', 'Day 2'),
-        ('3', 'Day 3'),
-        ('4', 'Day 4'),
-        ('5', 'Day 5'),
-        ('6', 'Day 6'),
-        ('7', 'Day 7'),
-    ]
     TIME_CHOICES = [
         ('br', 'Breakfast'),
         ('ln', 'Lunch'),
@@ -101,7 +92,7 @@ class PlanItem(models.Model):
 
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, blank=True, null=True)
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, blank=True, null=True)
-    day = models.CharField(max_length=255, choices=DAYS_CHOICES)
+    day = models.CharField(max_length=255, blank=True)
     time = models.CharField(max_length=255, choices=TIME_CHOICES, null=True, blank=True)
 
 
