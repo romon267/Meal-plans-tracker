@@ -2,11 +2,12 @@
 {% load i18n %}
 {% load widget_tweaks %}
 {% block content%}
-<div class="container content px-3">
+<div class="container content px-3 mt-4">
     <form method="POST">
         {% csrf_token %}
         <fieldset class="control">
-            <legend class="border-bottom pt-3 mb-4"><h1 class="has-text-weight-bold is-size-3">{%trans "Sign in"%}</h1></legend>
+            <legend><h1 class="has-text-weight-bold is-size-3">{%trans "Sign in"%}</h1></legend>
+            <hr class="mt-0 mb-3">
             {{ form.non_field_errors }}
             <div class="field">
                 {{ form.username.errors }}
@@ -23,8 +24,12 @@
             <button class="button is-danger" type="submit">{%trans "Sign in"%}</button>
         </div>
     </form>
-    <div class="border-top pt-3">
-        <small class="text-muted">{%trans "Need an account?"%} <a class="ml-2" href="{%url 'register'%}">{%trans "Sign up"%}</a></small>
+    <div class="pt-3">
+        <small>{%trans "Need an account?"%} <a class="ml-2" href="{%url 'register'%}">{%trans "Sign up"%}</a></small>
     </div>
+    <div class="pt-2">
+        <small>{%trans "Forgot password?"%} <a class="ml-2" href="{%url 'reset_password'%}">{%trans "Reset password"%}</a></small>
+    </div>
+
 </div>
 {% endblock content%}

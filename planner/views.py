@@ -5,8 +5,9 @@ from django.shortcuts import redirect, render
 from .models import Product, Recipe, Plan, PlanItem
 from django.contrib.auth.decorators import login_required
 from django.utils import translation
+from django.utils.translation import gettext
 from django.template.defaulttags import register
-# Create your views here.
+
 
 @register.filter
 def div(value, div):
@@ -18,6 +19,8 @@ def get_item(dictionary, key):
 
 
 def home(request):
+    if request.user.is_authenticated:
+        return redirect('planner')
     context = {}
     return render(request, 'planner/home.html', context)
 
@@ -36,6 +39,7 @@ def planner(request):
             plan = form.save()
             plan.user = request.user
             plan.save()
+            messages.success(request, gettext('Your new plan has been created!'))
             return redirect('planner')
     else:
         form = PlanForm()
@@ -49,7 +53,7 @@ def edit_plan(request, pk):
         plan = Plan.objects.get(pk=pk)
         items = plan.planitem_set.all()
     except ObjectDoesNotExist:
-        messages.warning(request, '404: Does not exist.')
+        messages.warning(request, gettext('404: Does not exist.'))
         if request.user.is_authenticated:
             return redirect('planner')
         else:
@@ -82,8 +86,7 @@ def edit_plan(request, pk):
                 planitem = PlanItem.objects.create(recipe=form.cleaned_data.get('recipe'),
                                                 time=form.cleaned_data.get('time'), day=day,
                                                 plan=plan)
-                messages.success(
-                    request, f'You have added {planitem.recipe.name} to the plan!')
+                
                 return redirect('edit-plan', pk)
         else:
             form = PlanItemForm()
@@ -91,7 +94,7 @@ def edit_plan(request, pk):
                 'day_calories': day_calories, 'day_price': day_price, 'language': language}
         return render(request, 'planner/edit_plan.html', context)
     else:
-        messages.warning(request, '403: Forbidden.')
+        messages.warning(request, gettext('403: Forbidden.'))
         if request.user.is_authenticated:
             return redirect('planner')
         else:
@@ -123,6 +126,7 @@ def recipes(request):
             recipe = form.save()
             recipe.user = request.user
             recipe.save()
+            messages.success(request, gettext('Your new recipe has been created'))
             return redirect('recipes')
     else:
         form = RecipeForm()
@@ -147,14 +151,14 @@ def delete_recipe(request, pk):
         recipe = Recipe.objects.get(pk=pk)
     except ObjectDoesNotExist:
         messages.warning(
-                request, f'404: Object does not exist.')
+                request, gettext(f'404: Object does not exist.'))
         return redirect('recipes')
     if recipe.user == request.user:
         recipe.delete()
-        messages.success(request, 'You have deleted the recipe!')
+        messages.success(request, gettext('You have deleted the recipe!'))
         return redirect('recipes')
     else:
-        messages.warning(request, '403: Forbidden.')
+        messages.warning(request, gettext('403: Forbidden.'))
 @login_required
 def edit_items(request, pk):
     try:
@@ -162,7 +166,7 @@ def edit_items(request, pk):
         items = recipe.items.all()
     except ObjectDoesNotExist:
         messages.warning(
-                request, f'404: Object does not exist.')
+                request, gettext(f'404: Object does not exist.'))
         return redirect('recipes')
     if recipe.user == request.user:
         if request.method == 'POST':
@@ -170,8 +174,7 @@ def edit_items(request, pk):
             if form.is_valid():
                 recipeitem = form.save()
                 recipe.items.add(recipeitem)
-                messages.success(
-                    request, f'You have added {recipeitem.product.name} to the recipe!')
+                
                 return redirect('edit-items', pk)
         else:
             form = RecipeItemForm()
@@ -179,7 +182,7 @@ def edit_items(request, pk):
         return render(request, 'planner/edit_items.html', context)
     else:
         messages.warning(
-                request, f'403: Forbidden.')
+                request, gettext(f'403: Forbidden.'))
         return redirect('recipes')
 
 
@@ -189,14 +192,14 @@ def delete_item(request, pk, item_pk):
         recipe = Recipe.objects.get(pk=pk)
         item = recipe.items.get(pk=item_pk)
     except ObjectDoesNotExist:
-        messages.warning(request, '404: Does not exist.')
+        messages.warning(request, gettext('404: Does not exist.'))
         return redirect('home')
     if request.user == recipe.user:
         item.delete()
-        messages.success(request, 'Deleted successfully!')
+        messages.success(request, gettext('Deleted successfully!'))
         return redirect('edit-items', pk)
     else:
-        messages.warning(request, '403: Forbidden.')
+        messages.warning(request, gettext('403: Forbidden.'))
         return redirect('home')
     
 @login_required
@@ -204,14 +207,14 @@ def delete_plan(request, pk):
     try:
         plan = Plan.objects.get(pk=pk)
     except Plan.DoesNotExist:
-        messages.warning(request, '404: Plan does not exist.')
+        messages.warning(request, gettext('404: Plan does not exist.'))
         return redirect('home')
     if request.user == plan.user:
         plan.delete()
-        messages.success(request, 'Deleted successfully!')
+        messages.success(request, gettext('Deleted successfully!'))
         return redirect('planner')
     else:
-        messages.warning(request, '403: Forbidden.')
+        messages.warning(request, gettext('403: Forbidden.'))
         return redirect('home')
 
 
@@ -221,12 +224,12 @@ def delete_plan_item(request, pk, item_pk):
         plan = Plan.objects.get(pk=pk)
         item = plan.planitem_set.get(pk=item_pk)
     except ObjectDoesNotExist:
-        messages.warning(request, '404: Does not exist.')
+        messages.warning(request, gettext('404: Does not exist.'))
         return redirect('home')
     if request.user == plan.user:
         item.delete()
-        messages.success(request, 'Deleted successfully!')
+        messages.success(request, gettext('Deleted successfully!'))
         return redirect('edit-plan', pk)
     else:
-        messages.warning(request, '403: You can not delete that.')
+        messages.warning(request, gettext('403: You can not delete that.'))
         return redirect('home')

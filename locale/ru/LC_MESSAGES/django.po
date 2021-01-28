@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 18:44+0300\n"
+"POT-Creation-Date: 2021-01-28 22:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: .\planner\templates\planner\edit_items.html:7
 #: .\planner\templates\planner\edit_plan.html:7
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: .\planner\templates\planner\edit_items.html:13
 msgid "You can add or delete items from a recipe here"
@@ -94,11 +94,11 @@ msgstr "Рецепты"
 
 #: .\planner\templates\planner\home.html:7
 msgid "Landing page"
-msgstr ""
+msgstr "Лэндинг"
 
 #: .\planner\templates\planner\home.html:10
 msgid "Planar Tracker is in <strong>development!</strong>"
-msgstr ""
+msgstr "Трекер питания <strong>в разработке!</strong>"
 
 #: .\planner\templates\planner\navbar.html:21
 msgid "Planner"
@@ -198,6 +198,43 @@ msgstr "Название рецепта"
 msgid "Description"
 msgstr "Описание"
 
+#: .\planner\views.py:42
+msgid "Your new plan has been created!"
+msgstr "Вы создали новый план!"
+
+#: .\planner\views.py:56 .\planner\views.py:195 .\planner\views.py:227
+msgid "404: Does not exist."
+msgstr "Ошибка 404: Не существует"
+
+#: .\planner\views.py:97 .\planner\views.py:161 .\planner\views.py:185
+#: .\planner\views.py:202 .\planner\views.py:217
+msgid "403: Forbidden."
+msgstr "403: Запрещено."
+
+#: .\planner\views.py:129
+msgid "Your new recipe has been created"
+msgstr "Вы создали новый рецепт."
+
+#: .\planner\views.py:154 .\planner\views.py:169
+msgid "404: Object does not exist."
+msgstr "404: Объект не существует."
+
+#: .\planner\views.py:158
+msgid "You have deleted the recipe!"
+msgstr "Вы удалили рецепт!"
+
+#: .\planner\views.py:199 .\planner\views.py:214 .\planner\views.py:231
+msgid "Deleted successfully!"
+msgstr "Успешно удалено!"
+
+#: .\planner\views.py:210
+msgid "404: Plan does not exist."
+msgstr "404: План не существует."
+
+#: .\planner\views.py:234
+msgid "403: You can not delete that."
+msgstr "403: Запрещено."
+
 #: .\users\templates\users\login.html:9 .\users\templates\users\login.html:23
 #: .\users\templates\users\register.html:37
 msgid "Sign in"
@@ -216,6 +253,15 @@ msgstr "Пароль"
 msgid "Need an account?"
 msgstr "Нужен аккаунт?"
 
+#: .\users\templates\users\login.html:30
+msgid "Forgot password?"
+msgstr "Забыли пароль?"
+
+#: .\users\templates\users\login.html:30
+#: .\users\templates\users\password_reset_form.html:9
+msgid "Reset password"
+msgstr "Сбросить пароль"
+
 #: .\users\templates\users\logout.html:5
 msgid "You have been logged out"
 msgstr "Вы вышли из аккаунта"
@@ -223,6 +269,58 @@ msgstr "Вы вышли из аккаунта"
 #: .\users\templates\users\logout.html:7
 msgid "Log in again"
 msgstr "Войти снова"
+
+#: .\users\templates\users\password_reset_done.html:6
+msgid "Password reset complete."
+msgstr "Пароль успешно изменен."
+
+#: .\users\templates\users\password_reset_done.html:8
+msgid "Your Password has been set. You may login now."
+msgstr "Ваш пароль был изменен. Вы можете войти."
+
+#: .\users\templates\users\password_reset_done.html:9
+msgid "Return to home page "
+msgstr "Вернуться на домашнюю страницу "
+
+#: .\users\templates\users\password_reset_done.html:9
+msgid "or"
+msgstr "или"
+
+#: .\users\templates\users\password_reset_done.html:10
+msgid " Login"
+msgstr " Войти"
+
+#: .\users\templates\users\password_reset_form.html:14
+msgid "New password"
+msgstr "Новый пароль"
+
+#: .\users\templates\users\password_reset_form.html:19
+#: .\users\templates\users\register.html:28
+msgid "Confirm password"
+msgstr "Подтвердите пароль"
+
+#: .\users\templates\users\password_reset_form.html:24
+msgid "Reset"
+msgstr "Сбросить"
+
+#: .\users\templates\users\password_reset_sent.html:5
+msgid "Email sent."
+msgstr "Письмо отправлено."
+
+#: .\users\templates\users\password_reset_sent.html:7
+msgid ""
+"We've mailed you the instructions with reset details.\\nIf you didn't "
+"recieve an email, please make sure you’ve entered the address you registered "
+"with, and check your spam folder."
+msgstr ""
+"Мы отправили вам на почту инструкции по сбросу пароля. \\nЕсли вы не "
+"получили письмо, пожалуйста проверьте адрес, который вы указали и папку "
+"спама в почте."
+
+#: .\users\templates\users\password_reset_sent.html:8
+#: .\users\templates\users\reset_password.html:24
+msgid "Return to home page"
+msgstr "Вернуться на домашнюю страницу"
 
 #: .\users\templates\users\register.html:9
 msgid "Register"
@@ -233,13 +331,38 @@ msgid "Username"
 msgstr "Имя пользователя"
 
 #: .\users\templates\users\register.html:18
+#: .\users\templates\users\reset_password.html:15
 msgid "Email"
 msgstr "Почта"
-
-#: .\users\templates\users\register.html:28
-msgid "Confirm password"
-msgstr "Подтвердите пароль"
 
 #: .\users\templates\users\register.html:37
 msgid "Have an account already?"
 msgstr "Уже есть аккаунт?"
+
+#: .\users\templates\users\reset_password.html:6
+msgid "Reset password."
+msgstr "Сбросить пароль"
+
+#: .\users\templates\users\reset_password.html:8
+msgid ""
+"Forgot your password? Please enter the email address you used to register "
+"with us and we will send you a link to reset your password."
+msgstr ""
+"Забыли пароль? Введити свой email, который вы использовали при регистрации и "
+"мы вам отправим ссылку для сброса пароля."
+
+#: .\users\templates\users\reset_password.html:21
+msgid "Confirm"
+msgstr "Отправить"
+
+#: .\users\views.py:14
+msgid "Welcome to our site!"
+msgstr "Добро пожаловать на сайт!"
+
+#: .\users\views.py:15
+msgid ""
+"Hello, welcome to our website! You can start by adding some recipes and "
+"making some plans!"
+msgstr ""
+"Здравствуйте, добро пожаловать на наш сайт трекер питания! Вы можете начать "
+"с добавления рецептов и планов!"
