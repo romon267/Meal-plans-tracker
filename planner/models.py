@@ -92,8 +92,8 @@ class PlanItem(models.Model):
 
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, blank=True, null=True)
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, blank=True, null=True)
-    day = models.CharField(max_length=2555, blank=True)
-    time = models.CharField(max_length=2555, null=True, blank=True)
+    day = models.CharField(max_length=255, blank=True)
+    time = models.CharField(max_length=255, null=True, blank=True)
 
 
     def __str__(self):
