@@ -15,9 +15,9 @@
                     <text>{{plan.date_created}}</text> <br>
                     <text>{{plan.get_total_calories}} {%trans "total calories"%}</text> <br>
                     {% if language == 'en' %}
-                        <text>{%trans "Avg. price: $"%}{{plan.get_total_price|floatformat:2}}</text>
+                        <text>{%trans "Avg. price: $"%}{%widthratio plan.get_total_price 76 1 %}</text>
                     {% else %}
-                        <text>{%trans "Avg. price: $"%}{%widthratio plan.get_total_price 1 76%}</text>
+                        <text>{%trans "Avg. price: $"%}{{plan.get_total_price|floatformat:2}}</text>
                     {% endif %}
                 </div>
             </div>
