@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 12:25+0300\n"
+"POT-Creation-Date: 2021-01-28 12:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,106 +20,118 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\planner\templates\planner\edit_items.html:12
+#: .\planner\templates\planner\edit_items.html:7
+#: .\planner\templates\planner\edit_plan.html:7
+msgid "Delete"
+msgstr ""
+
+#: .\planner\templates\planner\edit_items.html:13
 msgid "You can add or delete items from a recipe here"
 msgstr "Вы можете добавить или удалить продукты из рецепта"
 
-#: .\planner\templates\planner\edit_items.html:21
+#: .\planner\templates\planner\edit_items.html:22
 msgid "Product"
 msgstr "Продукты"
 
-#: .\planner\templates\planner\edit_items.html:28
+#: .\planner\templates\planner\edit_items.html:29
 msgid "Grams"
 msgstr "Граммы"
 
-#: .\planner\templates\planner\edit_items.html:32
-#: .\planner\templates\planner\edit_plan.html:105
+#: .\planner\templates\planner\edit_items.html:33
+#: .\planner\templates\planner\edit_plan.html:110
 #: .\planner\templates\planner\planner.html:45
 #: .\planner\templates\planner\recipes.html:45
 msgid "Submit"
 msgstr "Отправить"
 
-#: .\planner\templates\planner\edit_plan.html:11
-#: .\planner\templates\planner\edit_plan.html:81
+#: .\planner\templates\planner\edit_plan.html:12
+#: .\planner\templates\planner\edit_plan.html:86
 msgid "Day"
 msgstr "День"
 
-#: .\planner\templates\planner\edit_plan.html:13
+#: .\planner\templates\planner\edit_plan.html:14
 msgid "Breakfast"
 msgstr "Завтрак"
 
-#: .\planner\templates\planner\edit_plan.html:23
+#: .\planner\templates\planner\edit_plan.html:24
 msgid "Lunch"
 msgstr "Обед"
 
-#: .\planner\templates\planner\edit_plan.html:33
+#: .\planner\templates\planner\edit_plan.html:34
 msgid "Dinner"
 msgstr "Ужин"
 
-#: .\planner\templates\planner\edit_plan.html:43
+#: .\planner\templates\planner\edit_plan.html:44
 msgid "Snacks"
 msgstr "Перекус"
 
-#: .\planner\templates\planner\edit_plan.html:53
+#: .\planner\templates\planner\edit_plan.html:54
 msgid "Total calories: "
 msgstr "Всего калорий: "
 
-#: .\planner\templates\planner\edit_plan.html:55
-#: .\planner\templates\planner\edit_plan.html:57
+#: .\planner\templates\planner\edit_plan.html:56
+#: .\planner\templates\planner\edit_plan.html:58
 msgid "Total price: $"
 msgstr "Прим. цена: ₽"
 
-#: .\planner\templates\planner\edit_plan.html:64
+#: .\planner\templates\planner\edit_plan.html:65
+#: .\planner\templates\planner\recipes.html:21
+msgid "Edit"
+msgstr "Изменить"
+
+#: .\planner\templates\planner\edit_plan.html:72
 msgid "You can add recipes to your plan"
 msgstr "Добавьте рецепты в ваш план"
 
-#: .\planner\templates\planner\edit_plan.html:92
+#: .\planner\templates\planner\edit_plan.html:97
 msgid "Time"
 msgstr "Время"
 
-#: .\planner\templates\planner\edit_plan.html:99
+#: .\planner\templates\planner\edit_plan.html:104
 msgid "Recipe"
 msgstr "Рецепты"
 
-#: .\planner\templates\planner\navbar.html:18
+#: .\planner\templates\planner\home.html:7
+msgid "Landing page"
+msgstr ""
+
+#: .\planner\templates\planner\home.html:10
+msgid "Planar Tracker is in <strong>development!</strong>"
+msgstr ""
+
+#: .\planner\templates\planner\navbar.html:21
 msgid "Planner"
 msgstr "Планы"
 
-#: .\planner\templates\planner\navbar.html:22
+#: .\planner\templates\planner\navbar.html:25
 msgid "Products"
 msgstr "Продукты"
 
-#: .\planner\templates\planner\navbar.html:26
+#: .\planner\templates\planner\navbar.html:29
 msgid "Recipes"
 msgstr "Рецепты"
 
-#: .\planner\templates\planner\navbar.html:31
+#: .\planner\templates\planner\navbar.html:34
 msgid "More"
 msgstr "Еще"
 
-#: .\planner\templates\planner\navbar.html:36
+#: .\planner\templates\planner\navbar.html:39
 msgid "About"
 msgstr "О сайте"
 
-#: .\planner\templates\planner\navbar.html:39
-#: .\users\templates\users\register.html:9
-msgid "Register"
-msgstr "Регистрация"
-
-#: .\planner\templates\planner\navbar.html:42
-#: .\planner\templates\planner\navbar.html:67
-msgid "Log in"
-msgstr "Войти"
-
-#: .\planner\templates\planner\navbar.html:60
+#: .\planner\templates\planner\navbar.html:61
 msgid "Log out"
 msgstr "Выйти"
 
-#: .\planner\templates\planner\navbar.html:64
+#: .\planner\templates\planner\navbar.html:65
 #: .\users\templates\users\login.html:27
 #: .\users\templates\users\register.html:33
 msgid "Sign up"
 msgstr "Зарегистрироваться"
+
+#: .\planner\templates\planner\navbar.html:68
+msgid "Log in"
+msgstr "Войти"
 
 #: .\planner\templates\planner\planner.html:6
 msgid "Your plans"
@@ -177,10 +189,6 @@ msgstr "Все рецепты"
 msgid "calories"
 msgstr "калорий"
 
-#: .\planner\templates\planner\recipes.html:21
-msgid "Edit"
-msgstr "Изменить"
-
 #: .\planner\templates\planner\recipes.html:36
 msgid "Recipe name"
 msgstr "Название рецепта"
@@ -190,7 +198,6 @@ msgid "Description"
 msgstr "Описание"
 
 #: .\users\templates\users\login.html:9 .\users\templates\users\login.html:23
-#: .\users\templates\users\logout.html:7
 #: .\users\templates\users\register.html:37
 msgid "Sign in"
 msgstr "Войти"
@@ -215,6 +222,10 @@ msgstr "Вы вышли из аккаунта"
 #: .\users\templates\users\logout.html:7
 msgid "Log in again"
 msgstr "Войти снова"
+
+#: .\users\templates\users\register.html:9
+msgid "Register"
+msgstr "Регистрация"
 
 #: .\users\templates\users\register.html:13
 msgid "Username"
