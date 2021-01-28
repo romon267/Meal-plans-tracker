@@ -1,0 +1,25 @@
+{% extends 'planner/base.html' %}
+{% load i18n %}
+{% block content %}
+<div class="container content px-3 mt-2">
+    <h2 class="has-text-weight-bold is-size-3">{% trans "All products"%}:</h2>
+</div>
+<div class="container px-3">
+    <div class="columns">
+        {% for product in products%}
+            <div class="column is-one-quarter">
+                <div class="box has-text-primary">
+                    <p class="is-size-4 has-text-weight-bold">{{product.name}}</p>
+                    <text>{{product.calories}} {%trans "calories/100g"%}</text> <br>
+
+                    {%if language == 'en'%}
+                        <text>{%trans "Avg. price: $"%}{{product.price}} {%trans "for 100g"%}</text>
+                    {% else %}
+                        <text>{%trans "Avg. price: $"%}{%widthratio product.price 1 76%} {%trans "for 100g"%}</text>
+                    {%endif%}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

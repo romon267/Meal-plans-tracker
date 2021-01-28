@@ -1,0 +1,48 @@
+{% extends 'planner/base.html'%}
+{% load i18n %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container content px-3 mt-2">
+    <h2 class="has-text-weight-bold is-size-3">{%trans "Your plans"%}:</h2>
+</div>
+<div class="container px-3 mt-2">
+    <div class="columns">
+        {% for plan in plans%}
+            <div class="column is-one-quarter">
+                <div class="box">
+                    <p class="is-size-4 has-text-weight-bold"><a href="{%url 'edit-plan' plan.pk%}">{{plan.name}}</a></p>
+                    <text>{{plan.type}}</text> <br>
+                    <text>{{plan.date_created}}</text> <br>
+                    <text>{{plan.get_total_calories}} {%trans "total calories"%}</text> <br>
+                    {% if language == 'en' %}
+                        <text>{%trans "Avg. price: $"%}{{plan.get_total_price|floatformat:2}}</text>
+                    {% else %}
+                        <text>{%trans "Avg. price: $"%}{%widthratio plan.get_total_price 1 76%}</text>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container content px-3 mt-2">
+<form method ="POST">
+    {%csrf_token%}
+    {{ form.non_field_errors }}
+<div class="field">
+    {{ form.name.errors }}
+    <label class="label" for="{{ form.name.id_for_label }}">{%trans "Meal plan name"%}:</label>
+    {{ form.name|add_class:"input" }}
+</div>
+<div class="field">
+    {{ form.type.errors }}
+    <label class="label" for="{{ form.type.id_for_label }}">{%trans "Plan type"%}:</label>
+    <div class="select">
+        {{ form.type}}
+    </div>
+</div>
+
+    <button class="button is-danger" type="submit">{%trans "Submit"%}</button>
+</form>
+</div>
+{% endblock content %}
