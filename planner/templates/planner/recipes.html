@@ -13,9 +13,9 @@
                     <p class="is-size-4 has-text-weight-bold"><a href="{%url 'recipe-detail' recipe.pk%}">{{recipe.name}}</a></p>
                     <text>{{recipe.get_total_calories}} {%trans "calories"%}</text> <br>
                     {%if language == 'en'%}
-                        <text>{%trans "Avg. price: $"%}{%widthratio recipe.get_total_price 76 1%}</text>
+                        <text>{%trans "Avg. price: $"%}{%widthratio recipe.get_total_price 76 1|floatformat:2%}</text>
                     {% else %}
-                        <text>{%trans "Avg. price: $"%}{{recipe.get_total_price|floatformat:2}}</text>
+                        <text>{%trans "Avg. price: $"%}{{recipe.get_total_price}}</text>
                     {% endif %}
                     {% if request.user.is_authenticated and request.user == recipe.user%}
                         <a class="button is-small" href="{%url 'edit-items' recipe.pk%}">{%trans "Edit"%}</a>

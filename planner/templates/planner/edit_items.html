@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
 {% load i18n %}
 {% block content %}
-<div class="container content mt-3">
+<div class="container content mt-3 px-3">
     <text class="has-text-weight-bold is-size-3">{{recipe.name}}</text>
     <a class="button is-small is-danger" href="{%url 'delete-recipe' recipe.pk%}">{%trans "Delete"%}</a>
     <ul>
@@ -13,7 +13,7 @@
     <text class="has-text-weight-bold is-size-4">{%trans "You can add or delete items from a recipe here"%}</text>
 </div>
 
-<div class="container content">
+<div class="container content px-3">
     <form method ="POST">
         {%csrf_token%}
         {{ form.non_field_errors }}

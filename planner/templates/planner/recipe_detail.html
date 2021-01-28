@@ -7,9 +7,10 @@
     <ul>
         {% for item in items %}
         {% if language == 'en' %}
-        <li>{{item.product.name}}, {{item.grams}}{%trans "g"%}., {%trans "$"%}{{item.get_total|floatformat:2}}</li>
+        <li>{{item.product.name}}, {{item.grams}}{%trans "g"%}., {%trans "$"%}{%widthratio  item.get_total 76 1|floatformat:2%}</li>
+        
         {%else%}
-        <li>{{item.product.name}}, {{item.grams}}{%trans "g"%}., {%trans "$"%}{%widthratio  item.get_total 1 76%}</li>
+        <li>{{item.product.name}}, {{item.grams}}{%trans "g"%}., {%trans "$"%}{{item.get_total}}</li>
         {% endif %}
         {% endfor %}
         </ul>

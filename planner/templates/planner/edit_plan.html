@@ -53,9 +53,9 @@
                 
                 <text>{% trans "Total calories: "%}{{day_calories|get_item:value}}</text> <br>
                 {% if language == 'en'%}
-                    <text>{% trans "Total price: $"%} {%widthratio day_price|get_item:value 76 1 %}</text>
+                    <text>{% trans "Total price: $"%} {%widthratio day_price|get_item:value 76 1|floatformat:2 %}</text>
                 {% else %}
-                    <text>{% trans "Total price: $"%}{{day_price|get_item:value|floatformat:2}}</text>
+                    <text>{% trans "Total price: $"%}{{day_price|get_item:value}}</text>
                 {% endif %}
             </div>   
         </div>

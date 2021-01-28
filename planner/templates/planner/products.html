@@ -13,7 +13,7 @@
                     <text>{{product.calories}} {%trans "calories/100g"%}</text> <br>
 
                     {%if language == 'en'%}
-                        <text>{%trans "Avg. price: $"%}{%widthratio product.price 76 1%} {%trans "for 100g"%}</text>
+                        <text>{%trans "Avg. price: $"%}{%widthratio product.price 76 1|floatformat:2%} {%trans "for 100g"%}</text>
                     {% else %}
                         <text>{%trans "Avg. price: $"%}{{product.price}} {%trans "for 100g"%}</text>
                         
