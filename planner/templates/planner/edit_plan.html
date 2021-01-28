@@ -53,9 +53,9 @@
                 
                 <text>{% trans "Total calories: "%}{{day_calories|get_item:value}}</text> <br>
                 {% if language == 'en'%}
-                    <text>{% trans "Total price: $"%} {%widthratio day_price|get_item:value 76 1|floatformat:2 %}</text>
+                    <text>{% trans "Total price: $"%} {{day_price|get_item:value|div:76}}</text>
                 {% else %}
-                    <text>{% trans "Total price: $"%}{{day_price|get_item:value}}</text>
+                    <text>{% trans "Total price: $"%} {{day_price|get_item:value}}</text>
                 {% endif %}
             </div>   
         </div>
@@ -87,7 +87,7 @@
         <div class="select">
         <select name="select" id="select">
             {% for key, value in days.items %}
-            <option>{%trans "Day"%}{{value}}</option>
+            <option>{%trans "Day"%} {{value}}</option>
             {% endfor %}
         </select>
         </div>

@@ -8,7 +8,10 @@ from django.utils import translation
 from django.template.defaulttags import register
 # Create your views here.
 
-
+@register.filter
+def div(value, div):
+    return round((value / div) * 100, 2)
+    
 @register.filter
 def get_item(dictionary, key):
     return dictionary.get(key)
