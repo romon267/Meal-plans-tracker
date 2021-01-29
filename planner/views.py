@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 
 @register.filter
 def div(value, div):
-    return round((value / div) * 100, 2)
+    return round((value / div), 2)
     
 @register.filter
 def get_item(dictionary, key):
