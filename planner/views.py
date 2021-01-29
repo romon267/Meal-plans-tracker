@@ -82,7 +82,7 @@ def edit_plan(request, pk):
             day_calories[f'{v}'] = total_calories
             day_price[f'{v}'] = total_price
         if request.method == 'POST':
-            form = PlanItemForm(request.POST)
+            form = PlanItemForm(request.POST, user=request.user)
             if form.is_valid():
                 _, day = request.POST['select'].split()
                 planitem = PlanItem.objects.create(recipe=form.cleaned_data.get('recipe'),
@@ -91,7 +91,7 @@ def edit_plan(request, pk):
                 
                 return redirect('edit-plan', pk)
         else:
-            form = PlanItemForm()
+            form = PlanItemForm(user=request.user)
         context = {'plan': plan, 'items': items, 'form': form, 'days': days,
                 'day_calories': day_calories, 'day_price': day_price, 'language': language}
         return render(request, 'planner/edit_plan.html', context)
