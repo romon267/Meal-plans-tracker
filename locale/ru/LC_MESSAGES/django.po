@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 23:14+0300\n"
+"POT-Creation-Date: 2021-01-29 17:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,6 +77,7 @@ msgstr "Прим. цена: ₽"
 
 #: .\planner\templates\planner\edit_plan.html:65
 #: .\planner\templates\planner\recipes.html:21
+#: .\planner\templates\planner\user_recipes.html:22
 msgid "Edit"
 msgstr "Изменить"
 
@@ -120,17 +121,22 @@ msgstr "Еще"
 msgid "About"
 msgstr "О сайте"
 
-#: .\planner\templates\planner\navbar.html:61
+#: .\planner\templates\planner\navbar.html:42
+#: .\planner\templates\planner\user_recipes.html:6
+msgid "My recipes"
+msgstr "Мои рецепты"
+
+#: .\planner\templates\planner\navbar.html:64
 msgid "Log out"
 msgstr "Выйти"
 
-#: .\planner\templates\planner\navbar.html:65
+#: .\planner\templates\planner\navbar.html:68
 #: .\users\templates\users\login.html:28
 #: .\users\templates\users\register.html:33
 msgid "Sign up"
 msgstr "Зарегистрироваться"
 
-#: .\planner\templates\planner\navbar.html:68
+#: .\planner\templates\planner\navbar.html:71
 msgid "Log in"
 msgstr "Войти"
 
@@ -156,6 +162,8 @@ msgstr "всего калорий"
 #: .\planner\templates\planner\products.html:18
 #: .\planner\templates\planner\recipes.html:16
 #: .\planner\templates\planner\recipes.html:18
+#: .\planner\templates\planner\user_recipes.html:17
+#: .\planner\templates\planner\user_recipes.html:19
 msgid "Avg. price: $"
 msgstr "Прим. цена: ₽"
 
@@ -190,11 +198,28 @@ msgstr "г"
 msgid "$"
 msgstr "₽"
 
+#: .\planner\templates\planner\recipe_detail.html:17
+msgid "Author: "
+msgstr "Автор: "
+
+#: .\planner\templates\planner\recipe_detail.html:20
+#, fuzzy
+#| msgid "All recipes"
+msgid "Save recipe"
+msgstr "Все рецепты"
+
+#: .\planner\templates\planner\recipe_detail.html:22
+#, fuzzy
+#| msgid "Recipe"
+msgid "Remove recipe"
+msgstr "Рецепты"
+
 #: .\planner\templates\planner\recipes.html:6
 msgid "All recipes"
 msgstr "Все рецепты"
 
 #: .\planner\templates\planner\recipes.html:14
+#: .\planner\templates\planner\user_recipes.html:15
 msgid "calories"
 msgstr "калорий"
 
@@ -206,40 +231,53 @@ msgstr "Название рецепта"
 msgid "Description"
 msgstr "Описание"
 
-#: .\planner\views.py:43
+#: .\planner\templates\planner\user_recipes.html:7
+msgid "All your recipes and recipes you save will be added here!"
+msgstr "Все ваши рецепты и рецепты, которые вы сохраняете, будут отображаться здесь."
+
+#: .\planner\views.py:44
 msgid "Your new plan has been created!"
 msgstr "Вы создали новый план!"
 
-#: .\planner\views.py:57 .\planner\views.py:196 .\planner\views.py:228
+#: .\planner\views.py:58 .\planner\views.py:244 .\planner\views.py:277
 msgid "404: Does not exist."
 msgstr "Ошибка 404: Не существует"
 
-#: .\planner\views.py:98 .\planner\views.py:162 .\planner\views.py:186
-#: .\planner\views.py:203 .\planner\views.py:218
+#: .\planner\views.py:99 .\planner\views.py:208 .\planner\views.py:234
+#: .\planner\views.py:251 .\planner\views.py:267
 msgid "403: Forbidden."
 msgstr "403: Запрещено."
 
-#: .\planner\views.py:130
+#: .\planner\views.py:131
 msgid "Your new recipe has been created"
 msgstr "Вы создали новый рецепт."
 
-#: .\planner\views.py:155 .\planner\views.py:170
+#: .\planner\views.py:173 .\planner\views.py:187 .\planner\views.py:201
+#: .\planner\views.py:218
 msgid "404: Object does not exist."
 msgstr "404: Объект не существует."
 
-#: .\planner\views.py:159
+#: .\planner\views.py:177
+msgid "Recipe was saved to your collection!"
+msgstr "Рецепт был сохранен в вашу коллекцию!"
+
+#: .\planner\views.py:191
+msgid "Recipe was removed from your collection!"
+msgstr "Вы удалили рецепт из вашей коллекции!"
+
+#: .\planner\views.py:205
 msgid "You have deleted the recipe!"
 msgstr "Вы удалили рецепт!"
 
-#: .\planner\views.py:200 .\planner\views.py:215 .\planner\views.py:232
+#: .\planner\views.py:248 .\planner\views.py:264 .\planner\views.py:281
 msgid "Deleted successfully!"
 msgstr "Успешно удалено!"
 
-#: .\planner\views.py:211
+#: .\planner\views.py:260
 msgid "404: Plan does not exist."
 msgstr "404: План не существует."
 
-#: .\planner\views.py:235
+#: .\planner\views.py:284
 msgid "403: You can not delete that."
 msgstr "403: Запрещено."
 

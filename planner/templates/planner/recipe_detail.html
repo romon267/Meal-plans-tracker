@@ -13,6 +13,14 @@
         <li>{{item.product.name}}, {{item.grams}}{%trans "g"%}., {%trans "$"%} {{item.get_total}}</li>
         {% endif %}
         {% endfor %}
-        </ul>
+    </ul>
+    <text class="is-size-6">{%trans "Author: "%}{{recipe.user}}</text> <br>
+    {% if request.user != recipe.user and request.user.is_authenticated%}
+        {% if recipe not in q2 %}
+            <a class="button is-primary" href="{%url 'save-recipe' recipe.pk%}">{%trans "Save recipe"%}</a>
+        {% else %}
+            <a class="button is-primary" href="{%url 'remove-recipe' recipe.pk%}">{%trans "Remove recipe"%}</a>
+        {% endif %}
+    {% endif %}
 </div>
 {% endblock content %}

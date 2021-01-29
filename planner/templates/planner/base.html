@@ -16,7 +16,7 @@
   <body>
     {%include 'planner/navbar.html'%}
     {% if messages %}
-    <div class="container content mt-3">
+    <div class="container content mt-3 px-3">
       {% for message in messages %}
       <div class="notification is-{{message.tags}}" id="notification">
         <button

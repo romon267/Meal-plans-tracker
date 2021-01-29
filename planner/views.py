@@ -7,8 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.utils import translation
 from django.utils.translation import gettext
 from django.template.defaulttags import register
-from django.template.defaultfilters import date as _date
+from django.template.defaultfilters import date as _date, join
 from datetime import datetime
+from django.contrib.auth.models import User
 
 @register.filter
 def div(value, div):
@@ -135,16 +136,61 @@ def recipes(request):
     return render(request, 'planner/recipes.html', context)
 
 
+def user_recipes(request, pk):
+    user = User.objects.get(pk=pk)
+    q1 = Recipe.objects.filter(user=user)
+    q2 = Recipe.objects.filter(user_added=user)
+    recipes = q1.union(q2)
+    try:
+        language = request.session[translation.LANGUAGE_SESSION_KEY]
+    except KeyError:
+        language = 'ru'
+        request.session[translation.LANGUAGE_SESSION_KEY] = language
+    context = {'recipes': recipes, 'language': language}
+    return render(request, 'planner/user_recipes.html', context)
+
+
 def recipe_detail(request, pk):
     recipe = Recipe.objects.get(pk=pk)
+    user = request.user
+    q2 = Recipe.objects.filter(user_added=user)
     items = recipe.items.all()
     try:
         language = request.session[translation.LANGUAGE_SESSION_KEY]
     except KeyError:
         language = 'ru'
         request.session[translation.LANGUAGE_SESSION_KEY] = language
-    context = {'recipe': recipe, 'items': items, 'language': language}
+    context = {'recipe': recipe, 'items': items, 'language': language, 'q2': q2}
     return render(request, 'planner/recipe_detail.html', context)
+
+
+@login_required
+def save_recipe(request, pk):
+    try:
+        recipe = Recipe.objects.get(pk=pk)
+    except ObjectDoesNotExist:
+        messages.warning(
+                request, gettext(f'404: Object does not exist.'))
+        return redirect('recipes')
+    request.user.added_recipes.add(recipe)
+    messages.success(
+                request, gettext(f'Recipe was saved to your collection!'))
+    return redirect('recipe-detail', pk)
+
+
+@login_required
+def remove_recipe(request, pk):
+    try:
+        recipe = Recipe.objects.get(pk=pk)
+    except ObjectDoesNotExist:
+        messages.warning(
+                request, gettext(f'404: Object does not exist.'))
+        return redirect('recipes')
+    request.user.added_recipes.remove(recipe)
+    messages.success(
+                request, gettext(f'Recipe was removed from your collection!'))
+    return redirect('recipe-detail', pk)
+
 
 @login_required
 def delete_recipe(request, pk):
@@ -160,6 +206,8 @@ def delete_recipe(request, pk):
         return redirect('recipes')
     else:
         messages.warning(request, gettext('403: Forbidden.'))
+
+
 @login_required
 def edit_items(request, pk):
     try:
@@ -203,6 +251,7 @@ def delete_item(request, pk, item_pk):
         messages.warning(request, gettext('403: Forbidden.'))
         return redirect('home')
     
+
 @login_required
 def delete_plan(request, pk):
     try:

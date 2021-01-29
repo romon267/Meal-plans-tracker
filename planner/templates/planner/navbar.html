@@ -38,6 +38,9 @@
           <a class="navbar-item">
             {% trans "About" %}
           </a>
+          <a class="navbar-item" href="{%url 'user-recipes' request.user.pk %}">
+            {% trans "My recipes" %}
+          </a>
           <hr class="navbar-divider">
           <div class="navbar-item">
             <a class="has-text-dark pr-1" href="{%url 'change-language' 'en'%}">

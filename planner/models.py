@@ -29,6 +29,7 @@ class Recipe(models.Model):
     description = models.TextField(max_length=1000)
     items = models.ManyToManyField(RecipeItem, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    user_added = models.ManyToManyField(User, related_name='added_recipes')
     
     @property
     def get_total_price(self):
