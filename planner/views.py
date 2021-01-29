@@ -149,7 +149,7 @@ def user_recipes(request, pk):
     context = {'recipes': recipes, 'language': language}
     return render(request, 'planner/user_recipes.html', context)
 
-
+@login_required
 def recipe_detail(request, pk):
     recipe = Recipe.objects.get(pk=pk)
     user = request.user
