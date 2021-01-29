@@ -153,7 +153,8 @@ def user_recipes(request, pk):
 def recipe_detail(request, pk):
     recipe = Recipe.objects.get(pk=pk)
     user = request.user
-    q2 = Recipe.objects.filter(user_added=user)
+    if user.is_authenticated:
+        q2 = Recipe.objects.filter(user_added=user)
     items = recipe.items.all()
     try:
         language = request.session[translation.LANGUAGE_SESSION_KEY]
